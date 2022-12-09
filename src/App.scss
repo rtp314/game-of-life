@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+.sidebar {
+  flex-shrink: 1;
+  padding: 0.6rem;
+  background-color: #eee;
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+}
+
+.game {
+  padding: 1rem;
+}

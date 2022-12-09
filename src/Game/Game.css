@@ -1,0 +1,26 @@
+:root {
+  --cellsize: 15px;
+}
+
+.cell {
+  width: var(--cellsize);
+  height: var(--cellsize);
+  margin-top: -1px;
+  margin-left: -1px;
+  background-color: white;
+  border: 0.5px solid lightgrey;
+}
+
+.cell[data-alive='true'] {
+  background-color: blue;
+}
+
+div.row {
+  display: flex;
+  flex-direction: row;
+}
+
+div.column {
+  display: flex;
+  flex-direction: column;
+}
