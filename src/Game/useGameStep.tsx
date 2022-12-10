@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { CellArray } from '../util/types';
 import pastePattern from './helpers/pastePattern';
 
@@ -36,12 +36,22 @@ export default function useGameStep(width: number, height: number) {
     );
   }
 
-  function setCell(x: number, y: number, alive?: boolean) {
-    const newColumn = [...cells[x]];
-    if (alive) newColumn[y] = true;
-    else newColumn[y] = !newColumn[y];
-    setCells(prev => prev.map((column, i) => (i === x ? newColumn : column)));
-  }
+  const setCell = useCallback(
+    function (x: number, y: number, alive?: boolean) {
+      const newColumn = [...cells[x]];
+      if (alive) newColumn[y] = true;
+      else newColumn[y] = !newColumn[y];
+      setCells(prev => prev.map((column, i) => (i === x ? newColumn : column)));
+    },
+    [setCells],
+  );
+
+  // function setCell(x: number, y: number, alive?: boolean) {
+  //   const newColumn = [...cells[x]];
+  //   if (alive) newColumn[y] = true;
+  //   else newColumn[y] = !newColumn[y];
+  //   setCells(prev => prev.map((column, i) => (i === x ? newColumn : column)));
+  // }
 
   function clearCells() {
     stopGame();
@@ -60,11 +70,14 @@ export default function useGameStep(width: number, height: number) {
     }
   }
 
-  function onDrop(data: string, x: number, y: number) {
-    const pattern = JSON.parse(data);
-    if (!Array.isArray(pattern)) return;
-    setCells(prev => pastePattern(prev, pattern, x, y));
-  }
+  const onDrop = useCallback(
+    function (data: string, x: number, y: number) {
+      const pattern = JSON.parse(data);
+      if (!Array.isArray(pattern)) return;
+      setCells(prev => pastePattern(prev, pattern, x, y));
+    },
+    [setCells],
+  );
 
   useEffect(() => {
     return stopGame;

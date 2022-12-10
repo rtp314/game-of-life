@@ -11,7 +11,7 @@ interface ICellProps {
 
 const element = document.createElement('div');
 
-export default function Cell({ alive, onClick, onDrag, onDrop, x, y }: ICellProps) {
+function Cell({ alive, onClick, onDrag, onDrop, x, y }: ICellProps) {
   function handleDragStart(event: React.DragEvent) {
     event.dataTransfer.setDragImage(element, 0, 0);
     event.dataTransfer.setData('text', 'none');
@@ -42,3 +42,5 @@ export default function Cell({ alive, onClick, onDrag, onDrop, x, y }: ICellProp
     />
   );
 }
+
+export default React.memo(Cell);

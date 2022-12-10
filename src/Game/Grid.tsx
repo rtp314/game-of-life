@@ -1,5 +1,6 @@
 import Cell from './Cell';
 import { CellArray } from '../util/types';
+import { useCallback } from 'react';
 
 interface IGridProps {
   cells: CellArray;
@@ -8,9 +9,12 @@ interface IGridProps {
 }
 
 export default function Grid({ cells, setCell, onDrop }: IGridProps) {
-  function handleDrag(x: number, y: number) {
-    setCell(x, y, true);
-  }
+  const handleDrag = useCallback(
+    function (x: number, y: number) {
+      setCell(x, y, true);
+    },
+    [setCell],
+  );
 
   return (
     <div className="game">
