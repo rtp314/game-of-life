@@ -6,7 +6,7 @@ export default function Sidebar() {
   const [openSidebar, setOpenSidebar] = useState(false);
 
   return (
-    <div className={`sidebar ${openSidebar && 'open'}`}>
+    <div className={`sidebar ${openSidebar ? 'open' : ''}`}>
       <div className="open-sidebar">
         <button onClick={() => setOpenSidebar(prev => !prev)}>Open</button>
       </div>

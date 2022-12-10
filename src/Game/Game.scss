@@ -2,7 +2,12 @@
   --cellsize: 15px;
 }
 
+h1 {
+  text-align: center;
+}
+
 .game {
+  position: relative;
   display: grid;
   place-content: center;
 }
@@ -31,27 +36,37 @@ div.column {
 }
 
 .controls {
-  position: relative;
-  bottom: 1rem;
-  right: 10%;
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
   padding: var(--padding);
 
   .moveable-controls {
+    --width: 20rem;
+    --height: 6rem;
+    --gap: 0.3rem;
+    width: var(--width);
+    height: var(--height);
     background-color: #eee;
     position: absolute;
     padding: 0.5rem;
-    padding-left: 2rem;
+    left: calc(-1 * var(--width));
+    top: calc(-1 * var(--height));
+    display: grid;
+    place-content: center;
+    gap: var(--gap);
+    cursor: move;
   }
 
   .controls-buttons {
     display: flex;
     flex-direction: row;
-    gap: 0.2rem;
+    gap: var(--gap);
   }
 
   .controls-inputs {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: var(--gap);
   }
 }

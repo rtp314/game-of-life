@@ -6,7 +6,7 @@
   height: 100vh;
   width: 3rem;
   transition: all 200ms;
-  overflow: hidden;
+  z-index: 2;
 
   &.open {
     width: 20rem;
@@ -29,4 +29,5 @@
 .sidebar-content {
   padding: var(--padding);
   overflow-y: scroll;
+  max-height: calc(100vh - 3rem);
 }
