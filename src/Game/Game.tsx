@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import './Game.scss';
 import Grid from './Grid';
-import useGameStep from './useGameStep';
+import useGameLogic from './useGameLogic';
 import Controls from './Controls';
 import { defaultGridSize } from './defaults';
 
 export default function Game() {
   const [outputWidth, setOutputWidth] = useState(defaultGridSize);
   const [outputHeight, setOutputHeight] = useState(defaultGridSize);
-  const { cells, setCell, stepGame, startGame, stopGame, clearCells, onDrop } = useGameStep(outputWidth, outputHeight);
+  const { cells, setCell, stepGame, startGame, stopGame, clearCells, onDrop } = useGameLogic(outputWidth, outputHeight);
 
   return (
     <div className="game">

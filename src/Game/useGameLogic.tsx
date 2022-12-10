@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { CellArray } from '../util/types';
 import pastePattern from './helpers/pastePattern';
 
-export default function useGameStep(width: number, height: number) {
+export default function useGameLogic(width: number, height: number) {
   const [cells, setCells] = useState<CellArray>(Array(width).fill(Array(height).fill(false)));
   const intervalRef = useRef<number | null>(null);
 
@@ -38,20 +38,19 @@ export default function useGameStep(width: number, height: number) {
 
   const setCell = useCallback(
     function (x: number, y: number, alive?: boolean) {
-      const newColumn = [...cells[x]];
-      if (alive) newColumn[y] = true;
-      else newColumn[y] = !newColumn[y];
-      setCells(prev => prev.map((column, i) => (i === x ? newColumn : column)));
+      setCells(prev =>
+        prev.map((column, i) => {
+          if (i !== x) return column;
+
+          const newColumn = [...column];
+          if (alive) newColumn[y] = true;
+          else newColumn[y] = !newColumn[y];
+          return newColumn;
+        }),
+      );
     },
     [setCells],
   );
-
-  // function setCell(x: number, y: number, alive?: boolean) {
-  //   const newColumn = [...cells[x]];
-  //   if (alive) newColumn[y] = true;
-  //   else newColumn[y] = !newColumn[y];
-  //   setCells(prev => prev.map((column, i) => (i === x ? newColumn : column)));
-  // }
 
   function clearCells() {
     stopGame();
