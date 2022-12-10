@@ -1,17 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
+  padding: 0;
 }
 
 .layout {
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .sidebar {
   flex-shrink: 1;
   padding: 0.6rem;
   background-color: #eee;
+  height: 100vh;
+  overflow-y: scroll;
 
   ul {
     padding: 0;
@@ -24,4 +31,5 @@ body {
 
 .game {
   padding: 1rem;
+  overflow: auto;
 }

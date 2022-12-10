@@ -1,3 +1,4 @@
+import useDragImage from '../../Game/useDragImage';
 import { CellArray } from '../../util/types';
 
 interface IPatternProps {
@@ -6,35 +7,28 @@ interface IPatternProps {
 }
 
 export default function Pattern({ name, pattern }: IPatternProps) {
+  const { createPatternPreview, DragImage } = useDragImage();
+
   function handleDragStart(event: React.DragEvent, pattern: CellArray) {
     event.dataTransfer.setData('text', JSON.stringify(pattern));
+    const patternDiv = createPatternPreview(pattern);
+    event.dataTransfer.setDragImage(patternDiv, 0, 0);
     event.dataTransfer.effectAllowed = 'copy';
   }
 
   return (
     <>
-      <h2>{name}</h2>
+      <h3>{name}</h3>
       <div className="pattern" draggable="true" onDragStart={event => handleDragStart(event, pattern)}>
-        <PatternPreview pattern={pattern} />
+        {pattern.map(column => (
+          <div className="pattern-column">
+            {column.map(cell => (
+              <div className="pattern-cell" data-alive={cell}></div>
+            ))}
+          </div>
+        ))}
       </div>
-    </>
-  );
-}
-
-interface IPatternPreviewProps {
-  pattern: CellArray;
-}
-
-function PatternPreview({ pattern }: IPatternPreviewProps) {
-  return (
-    <>
-      {pattern.map(column => (
-        <div className="pattern-column">
-          {column.map(cell => (
-            <div className="pattern-cell" data-alive={cell}></div>
-          ))}
-        </div>
-      ))}
+      <DragImage />
     </>
   );
 }
