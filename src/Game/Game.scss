@@ -31,11 +31,17 @@ div.column {
 }
 
 .controls {
-  position: fixed;
+  position: relative;
   bottom: 1rem;
   right: 10%;
   padding: var(--padding);
-  background-color: #eee;
+
+  .moveable-controls {
+    background-color: #eee;
+    position: absolute;
+    padding: 0.5rem;
+    padding-left: 2rem;
+  }
 
   .controls-buttons {
     display: flex;
