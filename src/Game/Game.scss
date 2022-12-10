@@ -29,3 +29,23 @@ div.column {
   display: flex;
   flex-direction: column;
 }
+
+.controls {
+  position: fixed;
+  bottom: 1rem;
+  right: 10%;
+  padding: var(--padding);
+  background-color: #eee;
+
+  .controls-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+  }
+
+  .controls-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+}
