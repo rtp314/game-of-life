@@ -2,6 +2,11 @@
   --cellsize: 15px;
 }
 
+.game {
+  display: grid;
+  place-content: center;
+}
+
 .cell {
   width: var(--cellsize);
   height: var(--cellsize);

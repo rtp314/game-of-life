@@ -5,10 +5,8 @@ import Sidebar from './Sidebar/Sidebar';
 function App() {
   return (
     <div className="App">
-      <div className="layout">
-        <Sidebar />
-        <Game />
-      </div>
+      <Sidebar />
+      <Game />
     </div>
   );
 }
