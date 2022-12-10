@@ -1,0 +1,21 @@
+.pattern {
+  display: flex;
+  flex-direction: row;
+  aspect-ratio: 1;
+}
+
+.pattern-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 10px;
+  flex-grow: 1;
+}
+
+.pattern-cell {
+  flex-basis: 10px;
+  flex-grow: 1;
+
+  &[data-alive='true'] {
+    background-color: blue;
+  }
+}

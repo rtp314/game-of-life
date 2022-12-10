@@ -1,22 +1,12 @@
-import React from 'react';
-import { CellArray } from '../../util/types';
+import Pattern from './Pattern';
 import patterns from './patterns';
+import './Templates.scss';
 
 export default function Templates() {
-  function handleDragStart(event: React.DragEvent, pattern: CellArray) {
-    event.dataTransfer.setData('text', JSON.stringify(pattern));
-    event.dataTransfer.effectAllowed = 'copy';
-  }
-
   return (
     <>
       {patterns.map(pattern => (
-        <React.Fragment key={pattern.name}>
-          <h2>{pattern.name}</h2>
-          <div className="template" draggable="true" onDragStart={event => handleDragStart(event, pattern.pattern)}>
-            Drag and Drop
-          </div>
-        </React.Fragment>
+        <Pattern name={pattern.name} pattern={pattern.pattern} />
       ))}
     </>
   );
