@@ -81,6 +81,17 @@ const patterns = [
       [false, false, true, true, false, false, false, false, false],
     ],
   },
+  {
+    name: 'Switch Engine',
+    pattern: [
+      [false, true, false, false],
+      [true, false, true, false],
+      [false, false, false, false],
+      [true, false, false, true],
+      [false, false, true, true],
+      [false, false, false, true],
+    ],
+  },
 ];
 
 export default patterns;

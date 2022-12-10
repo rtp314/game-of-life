@@ -6,7 +6,7 @@ import debounce from '../util/debounce';
 
 const maxGridSize = 100;
 const minGridSize = 10;
-const defaultGridSize = 20;
+const defaultGridSize = 50;
 
 export default function Game() {
   const [width, setWidth] = useState(defaultGridSize);
